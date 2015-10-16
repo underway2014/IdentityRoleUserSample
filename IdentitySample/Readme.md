@@ -7,4 +7,4 @@ C 添加新表 -> 数据迁移 -> D Install -packet Odata -> E 修改  Global.as
 
 二、A -> D ( + Install EntityFrameWork code first ) -> C  -> B -> E -> OVER
 
-本工程为一方案
+本工程为一方案 嘿嘿
