@@ -110,3 +110,4 @@ D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\bin\zh-Han
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.Migrations.InitialCreate.resources
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.csproj.GenerateResource.Cache
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.Migrations.AddProductTable.resources
+D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.csprojResolveAssemblyReference.cache
