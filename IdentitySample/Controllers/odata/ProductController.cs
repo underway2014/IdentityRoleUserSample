@@ -1,5 +1,6 @@
 ﻿using IdentitySample.Models;
 using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -47,14 +48,17 @@ namespace IdentitySample.Controllers.odata
                 return BadRequest();
             }
 
-            var award = await db.Products.FindAsync(model.Id);
-            if (award == null)
+            var product = await db.Products.FindAsync(model.Id);
+            if (product == null)
             {
                 return NotFound();
             }
-
+           
             try
             {
+                product.Modify(model);
+                db.Entry(product).State = EntityState.Modified;
+                //db.Entry<Category>(product.Category).State = EntityState.Unchanged;
                 await db.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -76,8 +80,7 @@ namespace IdentitySample.Controllers.odata
 
             try
             {
-               
-
+                model.Create();
                 db.Products.Add(model);
 
                 await db.SaveChangesAsync();
@@ -124,16 +127,16 @@ namespace IdentitySample.Controllers.odata
         // DELETE odata/WeixinPage(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] string key)
         {
-            Product award = await db.Products.FindAsync(key);
+            Product product = await db.Products.FindAsync(key);
 
-            if (award == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
             try
             {
-                db.Products.Remove(award);
+                db.Products.Remove(product);
                 await db.SaveChangesAsync();
             }
             catch (Exception ex)

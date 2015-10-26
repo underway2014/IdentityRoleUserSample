@@ -29,15 +29,25 @@ namespace IdentitySample.Migrations
             //    );
             //
 
-            context.Products.AddOrUpdate(
-              new Product { Id = "1", Name = "mobile", Price = "22" }
-            );
+            //var guid = Guid.NewGuid().ToString();
+            //var guid1 = Guid.NewGuid().ToString();
 
-            context.Products.AddOrUpdate(
-              new Product { Id = "2", Name = "fans", Price = "222" }
-            );
+            //context.Categories.AddOrUpdate(
+            //    new Category { Id = guid, Name = "美食",Description = "好吃的哦",CreateTime = DateTime.Now}
+            //    );
+            //context.Categories.AddOrUpdate(
+            //    new Category { Id = guid1, Name = "娱乐", Description = "", CreateTime = DateTime.Now }
+            //    );
 
-            context.SaveChanges();
+            //context.Products.AddOrUpdate(
+            //  new Product { Id = Guid.NewGuid().ToString(), Name = "mobile", Price = "22", CategoryId = guid }
+            //);
+
+            //context.Products.AddOrUpdate(
+            //  new Product { Id = Guid.NewGuid().ToString(), Name = "fans", Price = "222", CategoryId = guid }
+            //);
+
+            //context.SaveChanges();
         }
     }
 }

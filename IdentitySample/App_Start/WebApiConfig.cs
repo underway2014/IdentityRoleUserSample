@@ -13,20 +13,21 @@ namespace IdentitySample
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            ODataModelBuilder builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Product>("Product");
             config.MapODataServiceRoute(
-                routeName: "ODataRoute",
+                routeName: "odata",
                 routePrefix: "odata",
-                model: builder.GetEdmModel());
+                model: ODataModel.GetEdmModel());
+
             // Web API routes
             //config.MapHttpAttributeRoutes();
 
             //config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
+            //    routeTemplate: "api/{controller}/{Id}",
+            //    defaults: new { Id = RouteParameter.Optional }
             //);
+
+            //config.AddODataQueryFilter();
         }
     }
 }

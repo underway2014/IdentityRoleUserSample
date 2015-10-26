@@ -24,7 +24,11 @@ namespace IdentitySample.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+
+
         static ApplicationDbContext()
         {
             // Set the database intializer which is run once during application start

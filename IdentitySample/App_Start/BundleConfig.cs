@@ -25,6 +25,16 @@ namespace IdentitySample
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/KendoUI_JS").Include(
+                        "~/Content/KendoUI/js/jszip.min.js",
+                        "~/Content/KendoUI/js/kendo.all.min.js",
+                        "~/Content/KendoUI/js/kendo.data.odata.editable.min.js",
+                        "~/Content/KendoUI/js/kendo.grid.editable.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/KendoUI_CSS").Include(
+                      "~/Content/KendoUI/styles/kendo.common.min.css",
+                      "~/Content/KendoUI/styles/kendo.default.min.css"));
         }
     }
 }

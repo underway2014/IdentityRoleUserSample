@@ -1,16 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentitySample.Models
 {
-    public class Product
+    [Table("Products")]
+    public class Product : Base
     {
-        [Key]
-        public string Id { get; set; }
-        public string Name { get; set; }
+        [ForeignKey("Category")]
+        public string CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
         public string Price { get; set; }
+        /// <summary>
+        /// 保质期
+        /// </summary>
+        public String ShelfLife { get; set; }
+        public string CoverUrl { get; set; }
+
+        public void Modify(Product model)
+        {
+            base.Modify(model);
+            
+
+            CategoryId = model.CategoryId;
+            Price = model.Price;
+            ShelfLife = model.ShelfLife;
+            CoverUrl = model.CoverUrl;
+        }
+
     }
 }
