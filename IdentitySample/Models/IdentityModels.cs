@@ -27,6 +27,8 @@ namespace IdentitySample.Models
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Award> Awards { get; set; }
+        public DbSet<Activity> Activities { get; set; }
 
 
         static ApplicationDbContext()

@@ -194,9 +194,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\AwardController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\odata\ActivityController.cs" />
+    <Compile Include="Controllers\odata\AwardController.cs" />
     <Compile Include="Controllers\odata\CategoryController.cs" />
     <Compile Include="Controllers\odata\ProductController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -217,9 +221,15 @@
     <Compile Include="Migrations\201510220845321_ModifyProductAddCoverUrl.Designer.cs">
       <DependentUpon>201510220845321_ModifyProductAddCoverUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510260320320_AddAwardAndActivitiesTables.cs" />
+    <Compile Include="Migrations\201510260320320_AddAwardAndActivitiesTables.Designer.cs">
+      <DependentUpon>201510260320320_AddAwardAndActivitiesTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Award.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -319,6 +329,8 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
+    <Content Include="Views\Award\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510220845321_ModifyProductAddCoverUrl.resx">
       <DependentUpon>201510220845321_ModifyProductAddCoverUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510260320320_AddAwardAndActivitiesTables.resx">
+      <DependentUpon>201510260320320_AddAwardAndActivitiesTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

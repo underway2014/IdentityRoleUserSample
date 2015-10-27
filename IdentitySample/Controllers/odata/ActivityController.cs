@@ -11,21 +11,21 @@ using System.Web.OData;
 
 namespace IdentitySample.Controllers.odata
 {
-    public class CategoryController : ODataController
+    public class ActivityController : ODataController
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET odata/Award
         [EnableQuery(MaxExpansionDepth = 2)]
-        public IHttpActionResult GetCategory()
+        public IHttpActionResult GetActivity()
         {
-            return Ok(db.Categories);
+            return Ok(db.Activities);
         }
 
         // GET odata/Award(5)
         [EnableQuery(MaxExpansionDepth = 2)]
-        public async Task<IHttpActionResult> GetCategory([FromODataUri] string key)
+        public async Task<IHttpActionResult> GetActivity([FromODataUri] string key)
         {
-            var award = await db.Categories.FindAsync(key);
+            var award = await db.Activities.FindAsync(key);
             if (award == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace IdentitySample.Controllers.odata
         // PUT odata/Award(5)
         //[Authorize]
         [HttpPut]
-        public async Task<IHttpActionResult> Put([FromODataUri] string key, Category model)//[FromODataUri] string key,
+        public async Task<IHttpActionResult> Put([FromODataUri] string key, Activity model)//[FromODataUri] string key,
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace IdentitySample.Controllers.odata
                 return BadRequest();
             }
 
-            var category = await db.Categories.FindAsync(model.Id);
+            var category = await db.Activities.FindAsync(model.Id);
 
             if (category == null)
             {
@@ -74,7 +74,7 @@ namespace IdentitySample.Controllers.odata
         // POST odata/Award
         //[Authorize]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(Category model)
+        public async Task<IHttpActionResult> Post(Activity model)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace IdentitySample.Controllers.odata
             {
 
                 model.Create(db);
-                db.Categories.Add(model);
+                db.Activities.Add(model);
 
                 await db.SaveChangesAsync();
 
@@ -101,14 +101,14 @@ namespace IdentitySample.Controllers.odata
 
         // PATCH odata/Award(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] string key, Delta<Category> patch)
+        public async Task<IHttpActionResult> Patch([FromODataUri] string key, Delta<Activity> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var award = await db.Categories.FindAsync(key);
+            var award = await db.Activities.FindAsync(key);
             if (award == null)
             {
                 return NotFound();
@@ -132,7 +132,7 @@ namespace IdentitySample.Controllers.odata
         [HttpDelete]
         public async Task<IHttpActionResult> Delete([FromODataUri] string key)
         {
-            Category award = await db.Categories.FindAsync(key);
+            Activity award = await db.Activities.FindAsync(key);
 
             if (award == null)
             {
@@ -141,7 +141,7 @@ namespace IdentitySample.Controllers.odata
 
             try
             {
-                db.Categories.Remove(award);
+                db.Activities.Remove(award);
                 await db.SaveChangesAsync();
             }
             catch (Exception ex)

@@ -2,6 +2,7 @@ namespace IdentitySample.Migrations
 {
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -47,7 +48,44 @@ namespace IdentitySample.Migrations
             //  new Product { Id = Guid.NewGuid().ToString(), Name = "fans", Price = "222", CategoryId = guid }
             //);
 
-            //context.SaveChanges();
+            var award = new Award();
+            award.Name = "µÁ”∞∆±";
+            award.Description = "test";
+            award.Id = Guid.NewGuid().ToString();
+
+            var award1 = new Award();
+            award1.Name = "¥Ú’€ø®";
+            award1.Description = "test1";
+            award1.Id = Guid.NewGuid().ToString();
+
+            var activity = new Activity();
+            activity.Name = "≥ÈΩ±";
+            activity.Id = Guid.NewGuid().ToString();
+
+            var activity1 = new Activity();
+            activity1.Name = "¥Ú’€øÒπ∫";
+            activity1.Id = Guid.NewGuid().ToString();
+
+
+
+            award.Activities = new List<Activity>();
+            award.Activities.Add(activity);
+
+            award1.Activities = new List<Activity>();
+            award1.Activities.Add(activity1);
+
+            activity1.Awards = new List<Award>();
+            activity1.Awards.Add(award);
+            activity1.Awards.Add(award1);
+
+            context.Awards.Add(award);
+            context.Awards.Add(award1);
+
+            context.Activities.Add(activity);
+            context.Activities.Add(activity1);
+
+
+            context.SaveChanges();
         }
     }
 }

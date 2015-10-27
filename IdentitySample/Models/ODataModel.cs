@@ -14,6 +14,8 @@ namespace IdentitySample.Models
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Product>("Product");
             builder.EntitySet<Category>("Category");
+            builder.EntitySet<Award>("Award");
+            builder.EntitySet<Award>("Activity");
 
             return builder.GetEdmModel();
         }

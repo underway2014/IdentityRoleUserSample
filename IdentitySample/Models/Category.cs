@@ -9,9 +9,9 @@ namespace IdentitySample.Models
     [Table("Categories")]
     public class Category : Base
     {
-        public void Modify(Category model)
+        public void Modify(Category model, ApplicationDbContext db)
         {
-            base.Modify(model);
+            base.Modify(model,db);
         }
     }
 }

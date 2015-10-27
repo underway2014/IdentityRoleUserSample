@@ -17,10 +17,9 @@ namespace IdentitySample.Models
         public String ShelfLife { get; set; }
         public string CoverUrl { get; set; }
 
-        public void Modify(Product model)
+        public void Modify(Product model, ApplicationDbContext db)
         {
-            base.Modify(model);
-            
+            base.Modify(model, db);
 
             CategoryId = model.CategoryId;
             Price = model.Price;

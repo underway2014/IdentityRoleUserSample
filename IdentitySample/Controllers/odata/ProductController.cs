@@ -56,9 +56,8 @@ namespace IdentitySample.Controllers.odata
            
             try
             {
-                product.Modify(model);
-                db.Entry(product).State = EntityState.Modified;
-                //db.Entry<Category>(product.Category).State = EntityState.Unchanged;
+                product.Modify(model, db);
+                //db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -80,7 +79,7 @@ namespace IdentitySample.Controllers.odata
 
             try
             {
-                model.Create();
+                model.Create(db);
                 db.Products.Add(model);
 
                 await db.SaveChangesAsync();
