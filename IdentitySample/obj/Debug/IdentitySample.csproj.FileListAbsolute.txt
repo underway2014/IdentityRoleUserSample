@@ -112,3 +112,4 @@ D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.Migrations.AddCategoryProductTable.resources
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.Migrations.ModifyProductAddCoverUrl.resources
 D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.Migrations.AddAwardAndActivitiesTables.resources
+D:\c#project\IdentityRoleManageSample\b\IdentitySample\IdentitySample\obj\Debug\IdentitySample.csprojResolveAssemblyReference.cache

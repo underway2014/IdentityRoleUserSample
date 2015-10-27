@@ -39,8 +39,15 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container-f body-content">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.Partial("_Navagation")
+            </div>
+            <div class="col-md-10">
+                @RenderBody()
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

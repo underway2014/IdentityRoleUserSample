@@ -331,6 +331,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Award\Index.cshtml" />
+    <Content Include="Views\Shared\_Navagation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

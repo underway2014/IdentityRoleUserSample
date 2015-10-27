@@ -1,0 +1,41 @@
+﻿<div id="panelbar-images"></div>
+<script>
+    $("#panelbar-images").kendoPanelBar({
+        dataSource: [
+            {
+                text: "产品管理",
+                items: [
+                    { text: "分类", cssClass: "fa fa-building", url:"/Category/Index" },
+                    { text: "产品", url:"/Product/Index" }
+                ]
+            },
+            {
+                text: "活动管理",
+                items: [
+                    { text: "活动", url:"/Activity/Index" },
+                    { text: "奖品", url:"/Award/Index" },
+                ]
+            },
+            {
+                text: "生活",
+                items: [
+                    { text: "Top News"},
+                    { text: "Photo Galleries" }
+                ]
+            },
+            {
+                text: "娱乐",
+                items: [
+                    { text: "Photo Galleries" },
+                    { text: "Videos Records" }
+                ]
+            }
+        ],
+        select: onSelect
+    });
+    function onSelect(e)
+    {
+        debugger;
+        //kendoConsole.log("Select: " + $(e.item).find("> .k-link").text());
+    }
+</script>
