@@ -39,7 +39,7 @@ namespace IdentitySample.Models
             }
         }
 
-        public void Create(ApplicationDbContext db)
+        public override void Create(ApplicationDbContext db)
         {
             base.Create(db);
 
@@ -47,7 +47,8 @@ namespace IdentitySample.Models
             {
                 foreach (var item in Activities)
                 {
-                    db.Entry<Activity>(item).State = EntityState.Unchanged;
+                    //db.Entry<Activity>(item).State = EntityState.Unchanged;
+                    db.Entry(item).State = EntityState.Unchanged;
                 }
             }
         }

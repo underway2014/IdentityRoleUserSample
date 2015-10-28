@@ -15,7 +15,7 @@ namespace IdentitySample.Models
             builder.EntitySet<Product>("Product");
             builder.EntitySet<Category>("Category");
             builder.EntitySet<Award>("Award");
-            builder.EntitySet<Award>("Activity");
+            builder.EntitySet<Activity>("Activity");
 
             return builder.GetEdmModel();
         }
