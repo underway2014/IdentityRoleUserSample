@@ -9,6 +9,7 @@ namespace IdentitySample.Controllers
     public class AwardController : Controller
     {
         // GET: Award
+        [Authorize]
         public ActionResult Index()
         {
             return View();

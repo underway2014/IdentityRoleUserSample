@@ -9,6 +9,7 @@ namespace IdentitySample.Controllers
     public class ActivityController : Controller
     {
         // GET: Activity
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             return View();
