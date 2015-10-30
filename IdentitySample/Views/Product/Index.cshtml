@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "产品";
+}
+
+<div id="example">
+    <div id="grid"></div>
+
+    <script>
+                $(document).ready(function () {
+                    var crudServiceBaseUrl = "/odata/Product",
+                        dataSource = new kendo.data.DataSource({
+                            type: "odata-v4",
+                            transport: {
+                                read:  {
+                                    url: crudServiceBaseUrl
+                                },
+                                update: {
+                                    url: function (options) {
+                                        return crudServiceBaseUrl + "('" + options.Id + "')";
+
+                                    }
+                                },
+                                destroy: {
+                                    url: function (options) {
+                                        return crudServiceBaseUrl + "('" + options.Id + "')";
+
+                                    }
+                                },
+                                create: {
+                                    url: crudServiceBaseUrl
+                                },
+                                parameterMap: function (options, operation) {
+                                if (operation !== "read" && options) {
+                                        return kendo.stringify(options);
+                                    }
+                                }
+                            },
+                            //batch: true,
+                            pageSize: 20,
+                            schema: {
+                                model: {
+                                    id: "Id",
+                                    fields: {
+                                        Id: {},
+                                        Name: { validation: { required: true } },
+                                        CategoryId: {},
+                                        ShelfLife: {},
+                                        Price: {},
+                                        CoverUrl: {},
+                                        Description: {  }
+                                    }
+                                }
+                            }
+                        });
+
+                   var URL = function(options)
+                    {
+                        return crudServiceBaseUrl + "('" + options.Id + "')";
+
+                    }
+
+                    $("#grid").kendoGrid({
+                        dataSource: dataSource,
+                        pageable: true,
+                        height: 550,
+                        toolbar: ["create"],
+                        columns: [
+                            { field: "Id" },
+                            { field: "Name", width: "120px" },
+                            {
+                                field: "CategoryId",
+                                editor: function (container, options) {
+                                    var dropDownList = $('<input id="categoryList" />');
+                                    dropDownList.attr("name", options.field);
+                                    dropDownList.appendTo(container);
+                                    $("#categoryList").kendoDropDownList({
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        dataSource: {
+                                            type: "odata-v4",
+                                            transport: {
+                                                read: {
+                                                    url: "/odata/Category"
+                                                },
+                                                parameterMap: function (options, operation) {
+                                                    if (operation !== "read" && options) {
+                                                        return kendo.stringify(options);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+                            },
+                            { field: "CoverUrl"},
+                            { field: "ShelfLife"},
+                            { field: "Price"},
+                            { field: "Description", width: "120px" },
+                            { command: ["edit", "destroy"], title: "&nbsp;", width: "150px" }],
+                        editable: "popup",
+                        edit:function(e)
+                        {
+                            e.container.find(".k-edit-label:first").hide();
+                            e.container.find(".k-edit-field:first").hide();
+                        }
+                    });
+                });
+    </script>
+</div>

@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "活动";
+}
+
+<script id="awardTemplate" type="text/x-kendo-template">
+    <ul>
+        # for (var i = 0; i < data.Awards.length; i++) { #
+        <li>#= data.Awards[i].Name #</li>
+        # } #
+     <ul>
+</script>
+
+    <div id="activityGrid"></div>
+
+    <script>
+                $(document).ready(function () {
+                    var crudServiceBaseUrl = "/odata/Activity",
+                        dataSource = new kendo.data.DataSource({
+                            type: "odata-v4",
+                            transport: {
+                                read: {
+                                    url: crudServiceBaseUrl + "?$expand=Awards"
+                                },
+                                update: {
+                                    url: function (options) {
+                                        return crudServiceBaseUrl + "('" + options.Id + "')";
+                                    }
+                                },
+                                destroy: {
+                                    url: function (options) {
+                                        return crudServiceBaseUrl + "('" + options.Id + "')";
+                                    }
+                                },
+                                create: {
+                                    url: crudServiceBaseUrl
+                                },
+                                parameterMap: function (options, operation) {
+                                if (operation !== "read" && options) {
+                                        return kendo.stringify(options);
+                                    }
+                                }
+                            },
+                            pageSize: 20,
+                            schema: {
+                                model: {
+                                    id: "Id",
+                                    fields: {
+                                        //Id: {},
+                                        //Name: { validation: { required: true } },
+                                        Count: {type:"number"},
+                                        BeginTime: {type:"date"},
+                                        EndTime: {type:"date"},
+                                        Awards: {},
+                                        //Description: {},
+                                        //CoverUrl: {}
+                                    }
+                                }
+                            }
+                        });
+
+                    $("#activityGrid").kendoGrid({
+                        dataSource: dataSource,
+                        pageable: true,
+                        height: 550,
+                        toolbar: ["create"],
+                        columns: [
+                            { field: "Id" },
+                            { field: "Name", width: "120px" },
+                            { field: "Awards", template: kendo.template($("#awardTemplate").html()),
+                                editor: function (container, options) {
+                                    var dropDownList = $('<select id="awards"></select>');
+                                    dropDownList.attr("name", options.field);
+                                    dropDownList.appendTo(container);
+                                    $("#awards").kendoMultiSelect({
+                                        placeholder: "选择...",
+                                        dataTextField: "Name",
+                                        dataValueField: "Id",
+                                        dataSource: {
+                                            type: "odata-v4",
+                                            serverFiltering: true,
+                                            transport: {
+                                                read: {
+                                                    url: "/odata/Award"
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+                            },
+                            { field: "Count" },
+                            { field: "CoverUrl" },
+                            { field: "BeginTime" },
+                            { field: "EndTime" },
+                            { field: "Description"},
+                            { command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }],
+                        editable: "popup",
+                        edit:function(e)
+                        {
+                            e.container.find(".k-edit-label:first").hide();
+                            e.container.find(".k-edit-field:first").hide();
+
+                            //e.container.find(".k-edit-label:eq(2)").hide();
+                            //e.container.find(".k-edit-field:eq(2)").hide();
+                        }
+                    });
+                });
+    </script>
+
