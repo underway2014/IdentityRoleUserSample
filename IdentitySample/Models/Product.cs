@@ -16,6 +16,10 @@ namespace IdentitySample.Models
         /// </summary>
         public String ShelfLife { get; set; }
         public string CoverUrl { get; set; }
+        /// <summary>
+        /// 产品销量
+        /// </summary>
+        public long Sales { get; set; }
 
         public void Modify(Product model, ApplicationDbContext db)
         {
@@ -25,6 +29,7 @@ namespace IdentitySample.Models
             Price = model.Price;
             ShelfLife = model.ShelfLife;
             CoverUrl = model.CoverUrl;
+            Sales = model.Sales;
         }
 
     }

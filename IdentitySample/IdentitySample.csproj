@@ -197,6 +197,7 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AwardController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\odata\ActivityController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Controllers\odata\ProductController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UploadFileController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,6 +226,10 @@
     <Compile Include="Migrations\201510260320320_AddAwardAndActivitiesTables.cs" />
     <Compile Include="Migrations\201510260320320_AddAwardAndActivitiesTables.Designer.cs">
       <DependentUpon>201510260320320_AddAwardAndActivitiesTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511030639353_ProductAddSalesField.cs" />
+    <Compile Include="Migrations\201511030639353_ProductAddSalesField.Designer.cs">
+      <DependentUpon>201511030639353_ProductAddSalesField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -332,6 +338,8 @@
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Award\Index.cshtml" />
     <Content Include="Views\Shared\_Navagation.cshtml" />
+    <Content Include="Views\UploadFile\Index.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510260320320_AddAwardAndActivitiesTables.resx">
       <DependentUpon>201510260320320_AddAwardAndActivitiesTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511030639353_ProductAddSalesField.resx">
+      <DependentUpon>201511030639353_ProductAddSalesField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

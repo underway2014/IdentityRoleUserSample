@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>upload file test</h2>
+
+<input type="file" name="mediaFile" id="photos" />
+<div id="preview">
+</div>
+<script>
+    $("#photos").kendoUpload({
+        async: {
+            saveUrl: "/UploadFile/UploadImage",
+            removeUrl: "/UploadFile/RemoveImage",
+            autoUpload: true
+        },
+        select: onSelect,
+        success: onSuccess,
+        upload: onUpload
+    });
+
+    function onSelect(e) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (event) {
+            var path = event.target.result;
+            var img = '<img src="' + path + '" >';
+            $("#preview").append(img);
+
+        };
+        fileReader.readAsDataURL(e.files[0].rawFile);
+
+        $.each(e.files, function (index, value) {
+            console.log("Name: " + value.name);
+            console.log("Size: " + value.size + " bytes");
+            console.log("Extension: " + value.extension);
+        });
+    };
+    function onSuccess(e) {
+        // Array with information about the uploaded files
+        var files = e.files;
+        if (e.operation == "upload") {
+            alert("Successfully uploaded " + files.length + " files");
+        }
+    }
+    function onUpload(e) {
+        // Array with information about the uploaded files
+        var files = e.files;
+
+        // Check the extension of each file and abort the upload if it is not .jpg
+        $.each(files, function () {
+            if (this.extension.toLowerCase() != ".jpg") {
+                alert("Only .jpg files can be uploaded")
+                e.preventDefault();
+            }
+        });
+    }
+</script>
+
+
